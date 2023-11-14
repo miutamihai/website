@@ -1,6 +1,11 @@
-# Website
+# Ivaldea
+This is the Elixir code that produces Ivaldea's website.
 
-**TODO: Add description**
+## Deployment
+* `mix deps.get`
+* `mix site.build`
+
+The resulting website will be stored in the `/output` folder.
 
 ## Installation
 
