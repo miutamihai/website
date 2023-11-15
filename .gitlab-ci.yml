@@ -1,13 +1,11 @@
-image: elixir:latest
-
-before_script:
-  - mix local.rebar --force
-  - mix local.hex --force
-  - mix deps.get
-
 build:
   stage: build
-  script: mix site.build
+  image: elixir:latest
+  script: 
+    - mix local.rebar --force
+    - mix local.hex --force
+    - mix deps.get
+    - mix site.build
 
 deploy:
   stage: deploy
