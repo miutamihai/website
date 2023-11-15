@@ -10,4 +10,4 @@ build:
 deploy:
   stage: deploy
   image: node:lts
-  script: npx wrangler pages deploy output
+  script: npx wrangler pages deploy output --project-name ivaldea-website
