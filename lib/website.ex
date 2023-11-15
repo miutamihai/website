@@ -31,9 +31,10 @@ defmodule Website do
         <script type="text/javascript" src="/assets/app.js" />
       </head>
       <body class="h-screen">
-        <header class="w-screen flex items-center justify-evenly bg-black">
-          <h1 class="text-xl text-slate-50">Ivaldea</h1>
-          <p>The Company</p>
+        <header class="w-screen flex items-center justify-center bg-black text-slate-50">
+          <h1 class="text-xl font-bold">Ivaldea</h1>
+          <p class="mx-2 font-thin">-</p>
+          <p class="font-thin">the Company</p>
         </header>
         <div class="w-full h-full flex flex-col items-center justify-center">
           <%= render_slot(@inner_block) %>
