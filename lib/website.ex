@@ -33,6 +33,7 @@ defmodule Website do
       <body class="h-screen">
         <header class="w-screen flex items-center justify-evenly bg-black">
           <h1 class="text-xl text-slate-50">Ivaldea</h1>
+          <p>The Company</p>
         </header>
         <div class="w-full h-full flex flex-col items-center justify-center">
           <%= render_slot(@inner_block) %>
