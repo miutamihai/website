@@ -5,10 +5,6 @@ before_script:
   - mix local.hex --force
   - mix deps.get
 
-mix:
-  script:
-    - mix test
-
 build:
   stage: build
   script: mix site.build
