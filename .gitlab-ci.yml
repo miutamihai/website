@@ -10,4 +10,4 @@ build:
 deploy:
   stage: deploy
   image: node:lts
-  script: npx wrangler deploy
+  script: npx wrangler pages deploy output
