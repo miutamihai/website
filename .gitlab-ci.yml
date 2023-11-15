@@ -6,6 +6,9 @@ build:
     - mix local.hex --force
     - mix deps.get
     - mix site.build
+  artifacts:
+    paths:
+      - output
 
 deploy:
   stage: deploy
