@@ -13,7 +13,6 @@ defmodule Website do
   def index(assigns) do
     ~H"""
     <.layout>
-      <h1>Ivaldea</h1>
       <h2>Posts!</h2>
       <ul>
         <li :for={post <- @posts}>
@@ -31,8 +30,13 @@ defmodule Website do
         <link rel="stylesheet" href="/assets/app.css" />
         <script type="text/javascript" src="/assets/app.js" />
       </head>
-      <body class="h-screen flex flex-col items-center justify-center">
-        <%= render_slot(@inner_block) %>
+      <body class="h-screen">
+        <header class="w-screen flex items-center justify-evenly bg-black">
+          <h1 class="text-xl text-slate-50">Ivaldea</h1>
+        </header>
+        <div class="w-full h-full flex flex-col items-center justify-center">
+          <%= render_slot(@inner_block) %>
+        </div>
       </body>
     </html>
     """
