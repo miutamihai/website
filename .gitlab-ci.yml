@@ -1,0 +1,19 @@
+image: elixir:latest
+
+before_script:
+  - mix local.rebar --force
+  - mix local.hex --force
+  - mix deps.get
+
+mix:
+  script:
+    - mix test
+
+build:
+  stage: build
+  script: mix site.build
+
+deploy:
+  stage: deploy
+  script: echo "Define your deployment script!"
+  environment: production
