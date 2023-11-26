@@ -13,4 +13,4 @@ build:
 deploy:
   stage: deploy
   image: node:lts
-  script: npx wrangler pages deploy output --project-name ivaldea-website --branch main
+  script: echo "Disabled for now"
