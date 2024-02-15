@@ -21,6 +21,13 @@ func main() {
 
 	os.WriteFile("test.html", buf.Bytes(), 0644)
 
-	component := hello("John")
-	component.Render(context.Background(), os.Stdout)
+	indexFile, err := os.Create("index.html")
+
+	if err != nil {
+		panic(err)
+	}
+
+	layout := layout()
+
+	layout.Render(context.Background(), indexFile)
 }
