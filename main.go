@@ -3,12 +3,14 @@ package main
 import (
 	"bytes"
 	"context"
-	"github.com/yuin/goldmark"
 	"os"
+	"website/views"
+
+	"github.com/yuin/goldmark"
 )
 
 func main() {
-	markdownBytes, err := os.ReadFile("test.md")
+	markdownBytes, err := os.ReadFile("posts/test.md")
 
 	if err != nil {
 		panic(err)
@@ -19,15 +21,15 @@ func main() {
 		panic(err)
 	}
 
-	os.WriteFile("test.html", buf.Bytes(), 0644)
+	os.WriteFile("out/test.html", buf.Bytes(), 0644)
 
-	indexFile, err := os.Create("index.html")
+	indexFile, err := os.Create("out/index.html")
 
 	if err != nil {
 		panic(err)
 	}
 
-	layout := layout()
+	home := views.Home()
 
-	layout.Render(context.Background(), indexFile)
+	home.Render(context.Background(), indexFile)
 }

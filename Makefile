@@ -5,4 +5,8 @@ run:
 	@go run .
 
 css:
-	@./tailwindcss -i assets/input.css -o assets/app.css
+	@./bin/tailwindcss -i assets/input.css -o out/assets/app.css
+
+# TODO: Change this to remove node dependency
+serve:
+	@npx serve -s ./out
