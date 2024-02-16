@@ -1,6 +1,6 @@
 build:
   stage: build
-  image: go:latest
+  image: golang:latest
   script: 
     - make css
     - make run
