@@ -2,7 +2,7 @@ build:
   stage: build
   image: golang:latest
   script: 
-    - make css
+    - make css-ci
     - make run
   artifacts:
     paths:
