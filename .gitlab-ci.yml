@@ -1,0 +1,9 @@
+build:
+  stage: build
+  image: go:latest
+  script: 
+    - make css
+    - make run
+  artifacts:
+    paths:
+      - out
