@@ -10,9 +10,9 @@ css:
 css-ci:
 	@./bin/tailwindcss-ci -i assets/input.css -o out/assets/app.css
 
-# TODO: Change this to remove node dependency
+# TODO: Change this to remove python dependency
 serve:
-	@npx serve -s ./out
+	@cd ./out && python3 -m http.server 8000
 
 full:
 	@make gen

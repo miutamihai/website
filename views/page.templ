@@ -1,0 +1,7 @@
+package views
+
+templ Page(content string) {
+	@layout() {
+		@templ.Raw(content)
+	}
+}

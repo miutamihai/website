@@ -2,11 +2,13 @@ package posts
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
 	"strings"
+	"website/views"
 
 	"github.com/yuin/goldmark"
 )
@@ -64,12 +66,13 @@ func Make() {
 		if directoryCreationErr != nil {
 			panic(err)
 		}
-		_, fileCreationErr := os.Create(newPath)
+
+		htmlFile, fileCreationErr := os.Create(newPath)
 
 		if fileCreationErr != nil {
 			panic(fileCreationErr)
 		}
 
-		os.WriteFile(newPath, buf.Bytes(), 0644)
+		views.Page(buf.String()).Render(context.Background(), htmlFile)
 	}
 }
