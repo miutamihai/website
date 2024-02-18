@@ -7,3 +7,7 @@ build:
   artifacts:
     paths:
       - out
+deploy:
+  stage: deploy
+  image: node:lts
+  script: npx wrangler pages deploy out --project-name mihaimiuta --branch main
