@@ -1,78 +1,41 @@
 package posts
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"io/fs"
 	"os"
-	"path/filepath"
 	"strings"
 	"website/views"
-
-	"github.com/yuin/goldmark"
 )
 
-const postsPath = "./posts"
-const outputPath = "./out"
-
-func getMarkdownFiles() []string {
+func getFileNames() []string {
 	var files []string
 
-	err := filepath.Walk(postsPath, func(path string, info fs.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
+	for _, file := range getMarkdownFiles() {
+		withoutExtension := strings.Split(file, ".md")[0]
+		fmt.Printf("Without extension is %s\n", withoutExtension)
 
-		if !info.IsDir() && filepath.Ext(path) == ".md" {
-			files = append(files, path)
-		}
+		withoutPostsPrefix := strings.Split(withoutExtension, "posts/")[1]
 
-		return nil
-	})
+		fmt.Printf("Without post prefix is %s\n", withoutPostsPrefix)
 
-	if err != nil {
-		panic(err)
+		files = append(files, withoutPostsPrefix)
 	}
 
 	return files
 }
 
-func makeNewPath(path string) string {
-	trimmedPath := strings.Split(path, ".md")[0]
-
-	return fmt.Sprintf("%s/%s.html", outputPath, trimmedPath)
-}
-
 func Make() {
-	files := getMarkdownFiles()
+	// TODO change this to display based on year
+	files := getFileNames()
 
-	for _, file := range files {
-		markdownBytes, err := os.ReadFile(file)
+	htmlFile, err := os.Create(fmt.Sprintf("%s/posts/index.html", outputPath))
 
-		if err != nil {
-			panic(err)
-		}
-
-		var buf bytes.Buffer
-		if err := goldmark.Convert(markdownBytes, &buf); err != nil {
-			panic(err)
-		}
-
-		newPath := makeNewPath(file)
-
-		directoryCreationErr := os.MkdirAll(filepath.Dir(newPath), 0770)
-
-		if directoryCreationErr != nil {
-			panic(err)
-		}
-
-		htmlFile, fileCreationErr := os.Create(newPath)
-
-		if fileCreationErr != nil {
-			panic(fileCreationErr)
-		}
-
-		views.Page(buf.String()).Render(context.Background(), htmlFile)
+	if err != nil {
+		panic(err)
 	}
+
+	views.PostsIndex(files).Render(context.Background(), htmlFile)
+
+	generateFiles()
 }

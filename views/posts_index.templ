@@ -1,0 +1,14 @@
+package views
+
+import "fmt"
+
+templ PostsIndex(posts []string) {
+	@layout() {
+		<div class="flex flex-col items-center justify-center">
+			<h1>Posts</h1>
+			for _, post := range posts {
+				<a href={ templ.URL(fmt.Sprintf("%s.html", post)) }>{ post }</a>
+			}
+		</div>
+	}
+}
