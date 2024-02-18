@@ -13,11 +13,7 @@ func getFileNames() []string {
 
 	for _, file := range getMarkdownFiles() {
 		withoutExtension := strings.Split(file, ".md")[0]
-		fmt.Printf("Without extension is %s\n", withoutExtension)
-
 		withoutPostsPrefix := strings.Split(withoutExtension, "posts/")[1]
-
-		fmt.Printf("Without post prefix is %s\n", withoutPostsPrefix)
 
 		files = append(files, withoutPostsPrefix)
 	}
@@ -26,6 +22,8 @@ func getFileNames() []string {
 }
 
 func Make() {
+	generateFiles()
+
 	// TODO change this to display based on year
 	files := getFileNames()
 
@@ -37,5 +35,4 @@ func Make() {
 
 	views.PostsIndex(files).Render(context.Background(), htmlFile)
 
-	generateFiles()
 }
