@@ -13,3 +13,9 @@ css-ci:
 # TODO: Change this to remove node dependency
 serve:
 	@npx serve -s ./out
+
+full:
+	@make gen
+	@make css
+	@make run
+
