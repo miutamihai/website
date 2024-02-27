@@ -2,7 +2,7 @@ build:
   stage: build
   image: golang:latest
   script: 
-    - make run
+    - make full
   artifacts:
     paths:
       - out
