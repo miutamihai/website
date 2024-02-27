@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"website/views"
+	"website/internal/views"
 )
 
 func getFileNames() []string {

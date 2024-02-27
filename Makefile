@@ -2,7 +2,7 @@ gen:
 	@templ generate
 
 run:
-	@go run .
+	@go run cmd/builder/main.go
 
 css:
 	@./bin/tailwindcss -i assets/input.css -o out/assets/app.css

@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"website/views"
+	"website/internal/views"
 
 	"github.com/yuin/goldmark"
 )

@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"os"
-	"website/posts"
-	"website/views"
+	"website/internal/posts"
+	"website/internal/views"
 )
 
 func main() {
