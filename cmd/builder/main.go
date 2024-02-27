@@ -4,10 +4,15 @@ import (
 	"context"
 	"os"
 	"website/internal/posts"
+	"website/internal/tailwind"
 	"website/internal/views"
 )
 
 func main() {
+	if err := tailwind.Ensure(); err != nil {
+		panic(err)
+	}
+
 	posts.Make()
 	indexFile, err := os.Create("out/index.html")
 
